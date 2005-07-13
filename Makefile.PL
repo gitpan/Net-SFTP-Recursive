@@ -27,13 +27,18 @@ sub MY::preinstall  { return 1; }   # return false to skip install
 # post-install handler; takes $module_name, $version, and $success
 sub MY::postinstall { return 0 }
 use ExtUtils::AutoInstall (
-    -version        => '0.40',
+    Feature1 => [
+        Net::SSH::Perl=>0.01,
+        ],
+    -core => [
+        File::Stat::Ls=>0.1,
+        ],
 );
 WriteMakefile(
-    DISTNAME        => 'Net-SFTP-Recursive-0.10.tar.gz',
+    DISTNAME        => 'Net-SFTP-Recursive-0.11.tar.gz',
     ABSTRACT        => 'Perl class for transfering files recursively and securely',
     NAME            => 'Net::SFTP::Recursive'        ,
-    PREREQ_PM       => {Test::Harness => 0.1,Test::More => 0.45,},
+    PREREQ_PM       => {Test::Harness => 0.1,Net::SFTP => 0.08,Test::More => 0.45,},
     AUTHOR          => 'geotiger2001@yahoo.com'      ,
-    VERSION         => 0.10                          ,
+    VERSION         => 0.11                          ,
 );

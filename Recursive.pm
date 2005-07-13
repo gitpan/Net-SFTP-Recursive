@@ -5,10 +5,10 @@ use strict;
 use warnings;
 use Carp;
 use Net::SFTP;
-use File::Stat::Ls qw(stat_attr); 
+use File::Stat::Ls qw(:all); 
 
 require 5.003;
-my $VERSION = 0.10;
+my $VERSION = 0.11;
 
 require Exporter;
 our @ISA         = qw(Exporter Net::SFTP);
@@ -359,7 +359,6 @@ download progress meters, etc.:
 sub rput {
     my $s = shift;
     my ($ldr, $rdr, $cb, $p) = @_;
-    print "S: $s\n";
     print "No local directory is specified.\n"  if !$ldr;
     return                                      if !$ldr; 
     my $vbm = (exists $s->{debug})?$s->{debug}:0; 
@@ -369,10 +368,10 @@ sub rput {
     $rdr = '/' if ! $rdr; 
     my @tmp = $s->ls($rdr); 
     print " + making remote dir $rdr...\n" if ! @tmp && $vbm;
+    my $attr = Net::SFTP::Attributes->new;
     my $ldr_sa = stat_attr($ldr, 'sftp');
-print "Here OK1\n";
-    $s->do_mkdir($rdr,$ldr_sa) if ! @tmp;
-print "Here OK2\n";
+    foreach my $k (keys %$ldr_sa) { $attr->{$k} = $ldr_sa->{$k}; }
+    $s->do_mkdir($rdr,$attr) if ! @tmp;
     my $idc  = " " x $idn; 
     my $msg  = "$idc + from $ldr\n$idc     to $rdr...\n";
     print "$msg\n" if $vbm; 
@@ -381,14 +380,13 @@ print "Here OK2\n";
     my $dp = ($p && exists $p->{dir_pat})?$p->{dir_pat}:0;
     my $cb4put = ($p && exists $p->{cb4put})?$p->{cb4put}:undef;
 
-print "Here OK3\n";
     # check remote list
     my @dr = $s->local_ls($ldr); 
     foreach my $d (@dr) {
         my $fn = $d->{filename};   # file name only
         my $ln = $d->{longname};   # file long list
         my $fa = $d->{a};          # file attributes
-        foreach my $k (sort keys %$fa) { print "$k=$fa->{$k}\n"; }
+    # foreach my $k (sort keys %$fa) { print "$k=$fa->{$k}\n"; }
         if ($ln =~ /^d/ |\ $ln =~ /<DIR>/i) { # it is a dir
             next if $dp && $dp !~ /$dp/;
             $p->{_idn} += 2 if $p && $p =~ /HASH/; 
@@ -508,9 +506,12 @@ sub local_ls {
 
 =item * Version 0.10
 
-This version is to test the procedures and create DATA trigger.
+This version includes the I<rget>, I<rput> and I<local_ls> methods.
+It is released on 07/12/2005. 
 
-04/22/2005 (htu) - finished creating DATA trigger rountines.
+07/13/2005 (htu) - changed I<rput> so that it is passing a 
+I<Net::SFTP::Attributes> object to I<do_mkdir>. 
+Changed version to 0.11.
 
 =cut
 
