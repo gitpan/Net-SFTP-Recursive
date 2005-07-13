@@ -1,6 +1,6 @@
 Recursive.pm
 test.pl
 Makefile.PL
-t/Recursiv.t
-Net-SFTP-Recursive-0.11.readme
+t/Recursive.t
+Net-SFTP-Recursive-0.12.readme
 README

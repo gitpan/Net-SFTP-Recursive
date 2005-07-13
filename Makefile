@@ -12,11 +12,11 @@
 
 #	ABSTRACT => q[Perl class for transfering files recursively and securely]
 #	AUTHOR => q[geotiger2001@yahoo.com]
-#	DISTNAME => q[Net-SFTP-Recursive-0.11.tar.gz]
+#	DISTNAME => q[Net-SFTP-Recursive-0.12.tar.gz]
 #	NAME => q[Net::SFTP::Recursive]
 #	PREREQ_PM => { Test::Harness=>q[0.1], File::Stat::Ls=>q[0.1], Net::SSH::Perl=>q[0.01], Net::SFTP=>q[0.08], Test::More=>q[0.45] }
-#	VERSION => q[0.11]
-#	test => { TESTS=>q[] }
+#	VERSION => q[0.12]
+#	test => { TESTS=>q[t/Recursive.t] }
 
 # --- MakeMaker post_initialize section:
 
@@ -49,11 +49,11 @@ FULL_AR = /usr/ccs/bin/ar
 # --- MakeMaker constants section:
 AR_STATIC_ARGS = cr
 NAME = Net::SFTP::Recursive
-DISTNAME = Net-SFTP-Recursive-0.11.tar.gz
+DISTNAME = Net-SFTP-Recursive-0.12.tar.gz
 NAME_SYM = Net_SFTP_Recursive
-VERSION = 0.11
-VERSION_SYM = 0_11
-XS_VERSION = 0.11
+VERSION = 0.12
+VERSION_SYM = 0_12
+XS_VERSION = 0.12
 INST_BIN = blib/bin
 INST_EXE = blib/script
 INST_LIB = blib/lib
@@ -636,7 +636,7 @@ $(MAKE_APERL_FILE) : $(FIRST_MAKEFILE)
 TEST_VERBOSE=0
 TEST_TYPE=test_$(LINKTYPE)
 TEST_FILE = test.pl
-TEST_FILES = t/*.t
+TEST_FILES = t/Recursive.t
 TESTDB_SW = -d
 
 testdb :: testdb_$(LINKTYPE)
@@ -659,7 +659,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd:
-	@$(PERL) -e "print qq{<SOFTPKG NAME=\"Net-SFTP-Recursive-0.11.tar.gz\" VERSION=\"0,11,0,0\">\n}. qq{\t<TITLE>Net-SFTP-Recursive-0.11.tar.gz</TITLE>\n}. qq{\t<ABSTRACT>Perl class for transfering files recursively and securely</ABSTRACT>\n}. qq{\t<AUTHOR>geotiger2001\@yahoo.com</AUTHOR>\n}. qq{\t<IMPLEMENTATION>\n}. qq{\t\t<DEPENDENCY NAME=\"File-Stat-Ls\" VERSION=\"0,1,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Net-SFTP\" VERSION=\"0,08,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Net-SSH-Perl\" VERSION=\"0,01,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Test-Harness\" VERSION=\"0,1,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Test-More\" VERSION=\"0,45,0,0\" />\n}. qq{\t\t<OS NAME=\"$(OSNAME)\" />\n}. qq{\t\t<ARCHITECTURE NAME=\"sun4-solaris-64int\" />\n}. qq{\t\t<CODEBASE HREF=\"\" />\n}. qq{\t</IMPLEMENTATION>\n}. qq{</SOFTPKG>\n}" > Net-SFTP-Recursive-0.11.tar.gz.ppd
+	@$(PERL) -e "print qq{<SOFTPKG NAME=\"Net-SFTP-Recursive-0.12.tar.gz\" VERSION=\"0,12,0,0\">\n}. qq{\t<TITLE>Net-SFTP-Recursive-0.12.tar.gz</TITLE>\n}. qq{\t<ABSTRACT>Perl class for transfering files recursively and securely</ABSTRACT>\n}. qq{\t<AUTHOR>geotiger2001\@yahoo.com</AUTHOR>\n}. qq{\t<IMPLEMENTATION>\n}. qq{\t\t<DEPENDENCY NAME=\"File-Stat-Ls\" VERSION=\"0,1,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Net-SFTP\" VERSION=\"0,08,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Net-SSH-Perl\" VERSION=\"0,01,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Test-Harness\" VERSION=\"0,1,0,0\" />\n}. qq{\t\t<DEPENDENCY NAME=\"Test-More\" VERSION=\"0,45,0,0\" />\n}. qq{\t\t<OS NAME=\"$(OSNAME)\" />\n}. qq{\t\t<ARCHITECTURE NAME=\"sun4-solaris-64int\" />\n}. qq{\t\t<CODEBASE HREF=\"\" />\n}. qq{\t</IMPLEMENTATION>\n}. qq{</SOFTPKG>\n}" > Net-SFTP-Recursive-0.12.tar.gz.ppd
 
 # --- MakeMaker pm_to_blib section:
 

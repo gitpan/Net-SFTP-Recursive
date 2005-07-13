@@ -4,5 +4,5 @@
 
 use Test::Harness;
 # Test::Harness::verbose=1;
-runtests(qw(t/Recursiv.t));
+runtests(qw(t/Recursive.t));
 

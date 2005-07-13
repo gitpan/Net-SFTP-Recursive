@@ -8,7 +8,7 @@ use Net::SFTP;
 use File::Stat::Ls qw(:all); 
 
 require 5.003;
-my $VERSION = 0.11;
+my $VERSION = 0.12;
 
 require Exporter;
 our @ISA         = qw(Exporter Net::SFTP);

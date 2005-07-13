@@ -35,10 +35,10 @@ use ExtUtils::AutoInstall (
         ],
 );
 WriteMakefile(
-    DISTNAME        => 'Net-SFTP-Recursive-0.11.tar.gz',
+    DISTNAME        => 'Net-SFTP-Recursive-0.12.tar.gz',
     ABSTRACT        => 'Perl class for transfering files recursively and securely',
     NAME            => 'Net::SFTP::Recursive'        ,
     PREREQ_PM       => {Test::Harness => 0.1,Net::SFTP => 0.08,Test::More => 0.45,},
     AUTHOR          => 'geotiger2001@yahoo.com'      ,
-    VERSION         => 0.11                          ,
+    VERSION         => 0.12                          ,
 );
